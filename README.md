@@ -1,7 +1,5 @@
 # **SISOP-1-2026-IT-054**
-Nabila Sharliz Sigit (5027251054)
-
-Berikut adalah Reporting dari Praktikum SISOP Modul 1 :
+Nabila Sharliz Sigit (5027251054)  Berikut adalah Reporting dari Praktikum SISOP Modul 1 :
 
 ---
 ## **Soal 1**
