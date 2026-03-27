@@ -56,5 +56,5 @@ END {
         }
 }
 ```
-Full code bisa dilihat di [KANJ.sh](./soal_1/KANJ.sh)
+Full code bisa dilihat di [KANJ.sh](./soal_1/KANJ.sh)<br>
 Data yang dipakai yaitu [Data Passenger](./soal_1/passenger.csv)
