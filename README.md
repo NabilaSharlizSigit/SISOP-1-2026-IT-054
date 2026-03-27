@@ -57,4 +57,4 @@ END {
         }
 }
 ```
-Full code bisa dilihat di [KANJ.sh](./KANJ.sh)
+Full code bisa dilihat di [KANJ.sh](./soal_1/KANJ.sh)
