@@ -461,7 +461,7 @@ Full code untuk Menu Kelola Cron :
 	;;
 ```
 
-**Output:**
+**Output:** <br>
 <br>
 <img width="539" height="260" alt="image" src="https://github.com/user-attachments/assets/09652f00-a5d2-4ff9-affc-cc66f35c97d0" />
 <br>
