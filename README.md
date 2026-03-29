@@ -57,8 +57,10 @@ END {
 }
 ```
 Full code bisa dilihat di [KANJ.sh](./soal_1/KANJ.sh)<br>
-Data yang dipakai yaitu [Data Passenger](./soal_1/passenger.csv)
+Data yang dipakai yaitu [Data Passenger](./soal_1/passenger.csv)<br>
+Berikut adalah outputnya: 
 
 ---
 ## **Soal 2**
 **Penjelasan**
+
