@@ -21,7 +21,7 @@ Dilanjutkan dengan logika logika command yang dibutuhkan seperti menghitung juml
 
 (Note: NR > 1 artinya mulai dari baris ke 2 agar header tidak keikut di hitung)
 
-```
+```awk
 NR > 1 {
         count_passenger++
         sum_age+=$2
@@ -39,7 +39,7 @@ NR > 1 {
 ```
 Langkah terakhir yaitu output menggunakan if-else
 
-```
+```awk
 END {
         if(pilihan=="a"){
                 print "Jumlah seluruh penumpang KANJ adalah " count_passenger " orang"
