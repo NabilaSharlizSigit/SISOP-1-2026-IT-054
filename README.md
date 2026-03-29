@@ -119,7 +119,7 @@ NR==2 {
 
 ```
 <br>
-Mengambil data latitude dan longitude melalui titik-penting.txt, dimulai dari memisahkan antara koma dan mennjumlahkan kolom ke 3 untuk latitude dan menjumlahkan kolom ke 4 untuk longitude, lalu outputnya dibagi jumlah titik yang ditemukan masing2 yaitu 4.
+Mengambil data latitude dan longitude melalui titik-penting.txt, dimulai dari memisahkan antara koma, lalu untuk baris 1(NR==1), x1 pada kolom 3 dan y1 pada kolom 4 begitu juga pada baris 2(NR==2). Setelah itu menghitung titik tengah x dan y dengan rumus tersebut.
 <br>
 
 Untuk menyimpannya ke posisipusaka.txt menggunakan command **./nemupusaka.sh > posisipusaka.txt** pada terminal
