@@ -95,6 +95,8 @@ awk -F'"' '/site_name/ {site=$4} /id/ {id=$4}
 
 }' gsxtrack.json
 ```
+````
+
 Pertama-tama menyimpan id dan site_name ke variabel id dan site<br>
 Untuk latitude dan longitude, menggunakan split untuk memecah menjadi dua dan a[2] berarti mengambil bagian ke-2 lalu gsub untuk menghilangkan koma yang ada di belakang, setelah itu menyimpannya di variabel x dan y dan print output.
 <br>
