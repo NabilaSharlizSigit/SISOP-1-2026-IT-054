@@ -141,7 +141,7 @@ Untuk menyimpannya ke posisipusaka.txt menggunakan command **./nemupusaka.sh > p
 **Penjelasan**
 
 Langkah pertama membuat loop Menu Utama dengan do-while yang akan berhenti jika berhenti jika memilih pilihan 7.Exit
-```
+```bash
 while true
 do
 echo " "
