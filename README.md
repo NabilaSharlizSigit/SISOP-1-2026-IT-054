@@ -108,10 +108,14 @@ Membuat shell script untuk menghitung titik tengah dan menyimpan outputnya ke fi
 ```
 #!/bin/bash
 
-awk 'BEGIN {FS=","} {
-        sumx+=$3
-        sumy+=$4
-} END { print "Koordinat pusat:\n(" sumx/4 "," sumy/4 ")" }' titik-penting.txt
+awk -F',' '
+NR==1 {x1=$3; y1=$4}
+NR==2 {
+    x2=$3; y2=$4;
+    mid_x=(x1+x2)/2;
+    mid_y=(y1+y2)/2;
+    print "Koordinat pusat:\n(" mid_x "," mid_y ")" 
+}' titik-penting.txt
 
 ```
 <br>
@@ -461,6 +465,24 @@ Full code untuk Menu Kelola Cron :
 <br>
 <img width="539" height="260" alt="image" src="https://github.com/user-attachments/assets/09652f00-a5d2-4ff9-affc-cc66f35c97d0" />
 <br>
+<img width="610" height="371" alt="image" src="https://github.com/user-attachments/assets/f59e25ba-de1c-4fa6-8640-67520ee51069" />
+<br>
+<br>
+<img width="530" height="405" alt="image" src="https://github.com/user-attachments/assets/ba871438-401b-4c91-8932-2616f50c135f" />
+<br>
+<img width="394" height="305" alt="image" src="https://github.com/user-attachments/assets/6ad340f2-5372-4476-826e-5a6d7b4cb66a" />
+<br>
+<img width="687" height="393" alt="image" src="https://github.com/user-attachments/assets/06769169-1014-49ad-b006-9c9882c42520" />
+<br>
+<img width="562" height="392" alt="image" src="https://github.com/user-attachments/assets/732ccdde-95a4-4cda-b9d9-c3be0208eb99" />
+<br>
+<img width="649" height="74" alt="image" src="https://github.com/user-attachments/assets/8055db15-c6ed-4c4d-8dc2-eb71b1aba3c8" />
+<br>
+Untuk menu kelola cron masih gagal, hanya bisa outpur ini saja <br>
+<img width="296" height="238" alt="image" src="https://github.com/user-attachments/assets/120c36ac-ca6d-49aa-b359-7090769320f9" />
+<br>
+
+
 
 
 
