@@ -141,7 +141,129 @@ Untuk menyimpannya ke posisipusaka.txt menggunakan command **./nemupusaka.sh > p
 ## **Soal 3**
 **Penjelasan**
 
+Langkah pertama membuat loop Menu Utama dengan do-while yang akan berhenti jika berhenti jika memilih pilihan 7.Exit
+```
+while true
+do
+echo " "
+echo "===== KOST SLEBEW MANAGEMENT SYSTEM ====="
+echo " "
+echo "NO | OPTION"
+echo "........................................."
+echo " 1 | Tambah Penghuni Baru"
+echo " 2 | Hapus Penghuni"
+echo " 3 | Tampilkan Daftar Penghuni"
+echo " 4 | Update Status Penghuni"
+echo " 5 | Cetak Laporan Keuangan"
+echo " 6 | Kelola Cron (Pengingat Tagihan)"
+echo " 7 | Exit Program"
+echo " "
+echo "=========================================="
+echo "Enter Option [1-7]:"
 
+```
+Untuk pilihan menggunakan read pilihan lalu switch case: <br>
+1. Opsi 1 : Tambah Penguni
+
+```
+read pilihan
+case $pilihan  in
+        1)
+                echo "=========== TAMBAH PENGHUNI ==========="
+                echo "......................................."
+                read -p "Masukkan Nama: " nama
+                read -p "Masukkan Kamar: " kamar
+                read -p "Masukkan Harga Sewa: " harga
+                read -p "Masukkan Tanggal Masuk (YYYY-MM-DD): " tanggal
+                read -p "Masukkan Status Awal (Aktif/Menunggak): " status
+                echo " "
+                echo "[!] Penghuni $nama berhasil ditambahkan ke Kamar $kamar dengan status $status."
+                echo " "
+                read -p "Tekan [ENTER] untuk kembali ke menu..."
+                echo "$nama,$kamar,$harga,$tanggal,$status" >> data/penghuni.csv
+                ;;
+
+```
+Untuk opsi pertama yaitu fitur tambah penghuni yang diisi dengan nama, kamar, harga, tanggal, status, lalu akan disimpan di [data_penghuni](./data/penghuni.csv) <br>
+2. Opsi 2 : Hapus Penghuni 
+
+```
+        2)
+                echo "=========== HAPUS PENGHUNI ============="
+                echo "........................................"
+                read -p "Masukkan nama penghuni yang akan dihapus: " nama_hapus
+
+                if ! grep -q "^$nama_hapus," data/penghuni.csv; then
+                echo "[!] Penghuni $nama_hapus tidak ditemukan."
+                read -p "Tekan [ENTER] untuk kembali ke menu..."
+                fi
+
+                baris_penghuni=$(grep "^$nama_hapus," data/penghuni.csv)
+                tanggal_hapus=$(date +%F)
+                echo "$baris_penghuni,$tanggal_hapus" >> sampah/history_hapus.csv
+                sed -i "/^$nama_hapus,/d" data/penghuni.csv
+
+                echo "[!] Data penghuni $nama_hapus berhasil diarsipkan ke sampah/history_hapus.csv dan dihapus dari si>
+                read -p "Tekan [ENTER] untuk kembali ke menu..."
+                ;;
+
+```
+Untuk opsi kedua yaitu fitur hapus penghuni, dimana pertama mencari apakah nama yang diinput ada di data yang disimpan menggunakan grep, jika ada maka melanjutkan untuk dihapus. Mengambil nama yang ingin dihapus dari data menggunakan grep dan mendeklarasikan sebagai variabel baris_penghuni, menambah tanggal_hapus dan menyimpan keduanya di [History Hapus](./sampah/history_hapus.csv)
+<br>
+Lalu menggunakan sed untuk menghapus nama penghuni yang ada di data. <br>
+3. Opsi 3 : Menampilkan Daftar Penghuni
+
+```
+        3)
+                echo "=========================== DAFTAR PENGHUNI ============================"
+                echo " "
+                printf "%-20s | %-6s | %-12s | %-12s | %-10s\n" "Nama" "Kamar" "Harga Sewa" "Tanggal Masuk" "Status"
+                echo "---------------------+--------+--------------+--------------+-----------"
+
+                awk -F ',' '{
+                        printf "%-20s | %-6s | %-12s | %-12s | %-10s\n", $1, $2, $3, $4, $5
+                        total++
+                        if($5=="Aktif") {
+                                aktif++
+                        } else if($5=="Menunggak"){
+                                menunggak++
+                        }
+                } END {
+                        print " "
+                        print "Total Penghuni: ", total
+                        print "Aktif: ", aktif
+                        print "Menunggak: ", menunggak
+                }' data/penghuni.csv
+
+                echo " "
+                read -p "Tekan [ENTER] untuk kembali ke menu..."
+                ;;
+
+```
+Opsi ketiga yaitu melihat daftar penghuni yang telah di rapikan menjadi tabel. Diberi tambahan informasi juga untuk total penghuni, total penghuni aktif dan totak penghuni menunggak. <br>
+4. Opsi 4 : Update Status Penghuni
+
+```
+        4)
+                echo "=============== UPDATE STATUS ==============="
+                echo " "
+                read -p "Masukkan Nama Penghuni: " name
+
+                if ! grep -q "^$name," data/penghuni.csv; then
+                        echo "[!] Penghuni $name tidak ditemukan."
+                        read -p "Tekan [ENTER] untuk kembali ke menu..."
+                fi
+
+                read -p "Masukkan Status Baru (Aktif/Menunggak): " status_baru
+
+                sed -i "s/^$name,\([^,]*\),\([^,]*\),\([^,]*\),.*/$name,\1,\2,\3,$status_baru/" data/penghuni.csv
+
+                echo "[!] Status $name berhasil diubah menjadi: $status_baru"
+                read -p "Tekan [ENTER] untuk kembali ke menu..."
+                ;;
+
+```
+Opsi keempat yaitu meng-update status penghuni yang diawali dengan mencari apakah nama penghuni tersebut ada di data, jika iya maka dilanjut dengan memasukkan status baru. Lalu, menggunakan sed untuk
 
 
 
