@@ -75,7 +75,7 @@ Langkah pertama yaitu mengunduh file [peta-ekspedisi-amba.pdf](./soal_2/ekspedis
 Setelah itu di clone kan dan menemukan file [gsxtrack.json](./soal_2/ekspedisi/peta-gunung-kawi/gsxtrack.json)
 <br>
 
-**parserkoordinat.sh**
+**parserkoordinat.sh** <br>
 Membuat shell script yang berisi id, site name, latitude dan longitude lalu menyimpannya di titik-penting.txt 
 <br>
 ```
@@ -103,7 +103,7 @@ Untuk latitude dan longitude, menggunakan split untuk memecah menjadi dua dan a[
 Untuk menyimpannya ke titik-penting.txt menggunakan command **./parserkoordinat.sh > titik-penting.txt** pada terminal
 <br>
 
-**nemupusaka.sh**
+**nemupusaka.sh** <br>
 Membuat shell script untuk menghitung titik tengah dan menyimpan outputnya ke file posisipusaka.txt (latitude, longitude)
 <br>
 ```
@@ -124,16 +124,17 @@ Untuk menyimpannya ke posisipusaka.txt menggunakan command **./nemupusaka.sh > p
 
 **Output:**
 <br>
-1. parserkoordinat.sh <br>
+1. parserkoordinat.sh
+<br>
 <img width="768" height="141" alt="image" src="https://github.com/user-attachments/assets/d83c58d5-c039-4743-9c3a-354b2bd5f852" />
 <br>
-2. titik-penting.txt <br>
+3. titik-penting.txt <br>
 <img width="754" height="83" alt="image" src="https://github.com/user-attachments/assets/f749ce3c-2e51-4cbb-94b6-a9f5a5f8686b" />
 <br>
-3. nemupusaka.sh <br>
+4. nemupusaka.sh <br>
 <img width="730" height="43" alt="image" src="https://github.com/user-attachments/assets/bb198086-5820-4554-9f26-c022d964408f" />
 <br>
-4. posisipusaka.txt <br>
+5. posisipusaka.txt <br>
 <img width="767" height="52" alt="image" src="https://github.com/user-attachments/assets/e3373ffa-49af-4579-a255-62b0444f8bbe" />
 <br>
 
