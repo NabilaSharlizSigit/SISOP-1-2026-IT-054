@@ -467,8 +467,6 @@ Full code untuk Menu Kelola Cron :
 <br>
 <img width="896" height="353" alt="image" src="https://github.com/user-attachments/assets/2e6e4b10-723e-4a14-a257-2dd658903e66" />
 <br>
-<img width="530" height="405" alt="image" src="https://github.com/user-attachments/assets/ba871438-401b-4c91-8932-2616f50c135f" />
-<br>
 <img width="394" height="305" alt="image" src="https://github.com/user-attachments/assets/6ad340f2-5372-4476-826e-5a6d7b4cb66a" />
 <br>
 <img width="687" height="393" alt="image" src="https://github.com/user-attachments/assets/06769169-1014-49ad-b006-9c9882c42520" />
