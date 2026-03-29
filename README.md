@@ -163,6 +163,7 @@ echo "Enter Option [1-7]:"
 
 ```
 Untuk pilihan menggunakan read pilihan lalu switch case: <br>
+<br>
 1. Opsi 1 : Tambah Penguni
 
 ```
@@ -185,6 +186,7 @@ case $pilihan  in
 
 ```
 Untuk opsi pertama yaitu fitur tambah penghuni yang diisi dengan nama, kamar, harga, tanggal, status, lalu akan disimpan di [data_penghuni](./data/penghuni.csv) <br>
+<br>
 2. Opsi 2 : Hapus Penghuni 
 
 ```
@@ -211,6 +213,7 @@ Untuk opsi pertama yaitu fitur tambah penghuni yang diisi dengan nama, kamar, ha
 Untuk opsi kedua yaitu fitur hapus penghuni, dimana pertama mencari apakah nama yang diinput ada di data yang disimpan menggunakan grep, jika ada maka melanjutkan untuk dihapus. Mengambil nama yang ingin dihapus dari data menggunakan grep dan mendeklarasikan sebagai variabel baris_penghuni, menambah tanggal_hapus dan menyimpan keduanya di [History Hapus](./sampah/history_hapus.csv)
 <br>
 Lalu menggunakan sed untuk menghapus nama penghuni yang ada di data. <br>
+<br>
 3. Opsi 3 : Menampilkan Daftar Penghuni
 
 ```
@@ -241,6 +244,7 @@ Lalu menggunakan sed untuk menghapus nama penghuni yang ada di data. <br>
 
 ```
 Opsi ketiga yaitu melihat daftar penghuni yang telah di rapikan menjadi tabel. Diberi tambahan informasi juga untuk total penghuni, total penghuni aktif dan totak penghuni menunggak. <br>
+<br>
 4. Opsi 4 : Update Status Penghuni
 
 ```
@@ -263,7 +267,12 @@ Opsi ketiga yaitu melihat daftar penghuni yang telah di rapikan menjadi tabel. D
                 ;;
 
 ```
-Opsi keempat yaitu meng-update status penghuni yang diawali dengan mencari apakah nama penghuni tersebut ada di data, jika iya maka dilanjut dengan memasukkan status baru. Lalu, menggunakan sed untuk
+Opsi keempat yaitu meng-update status penghuni yang diawali dengan mencari apakah nama penghuni tersebut ada di data, jika iya maka dilanjut dengan memasukkan status baru. Lalu, menggunakan sed untuk mengganti pola lama dengan pola baru (status baru) <br>
+<br>
+5. Opsi 5 : Laporan Keuangan Kost Slebew
+
+```
+
 
 
 
