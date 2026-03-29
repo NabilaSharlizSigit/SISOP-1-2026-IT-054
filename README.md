@@ -165,7 +165,7 @@ Untuk pilihan menggunakan read pilihan lalu switch case: <br>
 <br>
 1. Opsi 1 : Tambah Penguni
 
-```
+```bash
 read pilihan
 case $pilihan  in
         1)
@@ -188,7 +188,7 @@ Untuk opsi pertama yaitu fitur tambah penghuni yang diisi dengan nama, kamar, ha
 <br>
 2. Opsi 2 : Hapus Penghuni 
 
-```
+```bash
         2)
                 echo "=========== HAPUS PENGHUNI ============="
                 echo "........................................"
@@ -215,7 +215,7 @@ Lalu menggunakan sed untuk menghapus nama penghuni yang ada di data. <br>
 <br>
 3. Opsi 3 : Menampilkan Daftar Penghuni
 
-```
+```bash
         3)
                 echo "=========================== DAFTAR PENGHUNI ============================"
                 echo " "
@@ -246,7 +246,7 @@ Opsi ketiga yaitu melihat daftar penghuni yang telah di rapikan menjadi tabel. D
 <br>
 4. Opsi 4 : Update Status Penghuni
 
-```
+```bash
         4)
                 echo "=============== UPDATE STATUS ==============="
                 echo " "
@@ -270,7 +270,7 @@ Opsi keempat yaitu meng-update status penghuni yang diawali dengan mencari apaka
 <br>
 5. Opsi 5 : Laporan Keuangan Kost Slebew
 
-```
+```bash
 	5)
 		echo "=============== LAPORAN KEUANGAN KOST SLEBEW ==============="
 		echo " "
@@ -325,7 +325,7 @@ Ini gunanya untuk menangani mode eksekusi khusus berbasis argumen, yaitu --check
 <br>
 Setelah itu dilanjutkan kembali di switch-case 6, dengan do-while menu kelola cron dan nested switch case di setiap opsinya (agar tidak langsung kembali ke menu utama setiap melakukan satu aksi)
 
-```
+```bash
         6)
                 while true
                 do
@@ -343,7 +343,7 @@ Setelah itu dilanjutkan kembali di switch-case 6, dengan do-while menu kelola cr
 Opsi 1 : Lihat Cron Job Aktif <br>
 Berfungsi untuk melihat daftar cron job yang aktif. Menggunakan perintah crontab -l, kemudian memfilter hanya baris yang mengandung parameter --check-tagihan menggunakan grep.
 
-```
+```bash
                         1)
                                 echo "--- Daftar Cron Job Pengingat Tagihan ---"
                                 crontab -l 2>/dev/null | grep "--check-tagihan" || echo "Tidak ada jadwal."
@@ -355,7 +355,7 @@ Berfungsi untuk melihat daftar cron job yang aktif. Menggunakan perintah crontab
 Opsi 2 : Daftarkan Cron Job Pengingat <br>
 Berfungsi untuk mendaftarkan jadwal pengingat baru, dengan menginputkan waktu berupa jam dan menit sebagai waktu eksekusi. Selanjutnya, sistem akan mengambil daftar cron job yang sudah ada menggunakan crontab -l, lalu menghapus entri lama yang mengandung parameter --check-tagihan menggunakan grep -v, lalu program akan menambahkan cron job baru dengan format waktu yang telah dimasukkan.
 
-```
+```bash
                         2)
                                 read -p "Masukkan Jam (0-23): " jam
                                 read -p "Masukkan Menit (0-59): " menit
@@ -368,7 +368,7 @@ Berfungsi untuk mendaftarkan jadwal pengingat baru, dengan menginputkan waktu be
 Opsi 3 : Hapus Cron Job Pengingat <br>
 Berfungsi untuk menghapus jadwal cron job. Setelah sistem disaring seperti pada opsi 2, hasilnya kemudian langsung disimpan kembali ke dalam crontab menggunakan crontab -, sehingga cron job pengingat tagihan yang sebelumnya terdaftar akan dihapus sepenuhnya.
 
-```
+```bash
                         3)
                                 crontab -l 2>/dev/null | grep -v "--check-tagihan" | crontab -
                                 echo "[!] Cron job pengingat tagihan berhasil dihapus."
@@ -379,7 +379,7 @@ Berfungsi untuk menghapus jadwal cron job. Setelah sistem disaring seperti pada 
 
 Opsi terakhir : Exit (pada menu kelola dan menu utama)
 
-```
+```bash
                         4)
                                 break
                                 ;;
@@ -405,7 +405,7 @@ done
 ```
 Full code untuk Menu Kelola Cron :
 
-```
+```bash
 	6)
 		while true
 		do
