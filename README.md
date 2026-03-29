@@ -79,8 +79,6 @@ Setelah itu di clone kan dan menemukan file [gsxtrack.json](./soal_2/ekspedisi/p
 Membuat shell script yang berisi id, site name, latitude dan longitude lalu menyimpannya di titik-penting.txt 
 <br>
 ```awk
-#!/bin/bash
-
 awk -F'"' '/site_name/ {site=$4} /id/ {id=$4}
 /latitude/{
         split($0, a, ": ")
