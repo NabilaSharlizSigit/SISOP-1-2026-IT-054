@@ -272,6 +272,141 @@ Opsi keempat yaitu meng-update status penghuni yang diawali dengan mencari apaka
 5. Opsi 5 : Laporan Keuangan Kost Slebew
 
 ```
+	5)
+		echo "=============== LAPORAN KEUANGAN KOST SLEBEW ==============="
+		echo " "
+
+		awk -F ',' '{
+			if($5 == "Aktif"){
+				pemasukan+=$3
+			} else if($5 == "Menunggak"){
+				tunggakan+=$3
+				print "- " $1 " (Kamar " $2 ")"
+				ada=1
+			}
+
+			total_kamar++
+
+		} END {
+			print "Total Pemasukan (Aktif)   : Rp" pemasukan
+			print "Total Tunggakan           : Rp" tunggakan
+			print "Jumlah Kamar Terisi       : " total_kamar
+			print "-----------------------------------------"
+			print "Daftar penghuni menunggak: "
+			if(ada!=1) print "Tidak ada Tunggakan."
+		}' data/penghuni.csv > rekap/laporan_bulanan.txt
+
+		echo "[!] Laporan berhasil disimpan ke rekap/laporan_bulanan.txt"
+		read -p "Tekan [ENTER] untuk kembali ke menu..."
+		;;
+
+```
+Opsi kelima yaitu menampilkan laporan keuangan yang berisi total pemasukan ( dari penghuni aktif ), total tunggakan, jumlah kamar dan daftar penghuni tunggakan menggunakan awk. Laporan ini lalu disimpan di **rekap/laporan_bulanan.txt**. <br>
+<br>
+6. Opsi 6 : Menu Kelola Cron <br>
+<br>
+Sebelum memulai menu interaktif dari Cron, tambah fungsi berikut di bawah #!/bin/bash (di paling atas program)
+
+```
+#!/bin/bash
+
+if [ "$1" == "--check-tagihan" ]; then
+        mkdir -p log
+
+        awk -F ',' '
+        $5=="Menunggak" {
+                print "[" strftime("%Y-%m-%d %H:%M:%S") "] TAGIHAN: " $1 " (Kamar" $2 ") - Menunggak Rp" $3
+        }' data/penghuni.csv >> log/tagihan.log
+
+        exit 0
+fi
+
+```
+Ini gunanya untuk menangani mode eksekusi khusus berbasis argumen, yaitu --check-tagihan. Peletakan di atas ini bertujuan agar fitur dapat dijalankan secara otomatis (Membaca file data/penghuni.csv, memfilter data penghuni yang memiliki status "Menunggak", mencatat informasi tagihan ke dalam file log/tagihan.log) <br>
+<br>
+Setelah itu dilanjutkan kembali di switch-case 6, dengan do-while menu kelola cron dan nested switch case di setiap opsinya (agar tidak langsung kembali ke menu utama setiap melakukan satu aksi)
+
+```
+        6)
+                while true
+                do
+                        clear
+                        echo "========== MENU KELOLA CRON =========="
+                        echo " "
+                        echo "1. Lihat Cron Job Aktif"
+                        echo "2. Daftarkan Cron Job Pengingat"
+                        echo "3. Hapus Cron Job Pengingat"
+                        echo "4. Kembali"
+                        echo " "
+                        echo "======================================"
+                        read -p "Pilih [1-4]: " choice
+```
+Opsi 1 : Lihat Cron Job Aktif <br>
+Berfungsi untuk melihat daftar cron job yang aktif. Menggunakan perintah crontab -l, kemudian memfilter hanya baris yang mengandung parameter --check-tagihan menggunakan grep.
+
+```
+                        1)
+                                echo "--- Daftar Cron Job Pengingat Tagihan ---"
+                                crontab -l 2>/dev/null | grep "--check-tagihan" || echo "Tidak ada jadwal."
+                                echo " "
+                                read -p "Tekan [ENTER] untuk kembali ke menu..."
+                                ;;
+```
+
+Opsi 2 : Daftarkan Cron Job Pengingat <br>
+Berfungsi untuk mendaftarkan jadwal pengingat baru, dengan menginputkan waktu berupa jam dan menit sebagai waktu eksekusi. Selanjutnya, sistem akan mengambil daftar cron job yang sudah ada menggunakan crontab -l, lalu menghapus entri lama yang mengandung parameter --check-tagihan menggunakan grep -v, lalu program akan menambahkan cron job baru dengan format waktu yang telah dimasukkan.
+
+```
+                        2)
+                                read -p "Masukkan Jam (0-23): " jam
+                                read -p "Masukkan Menit (0-59): " menit
+
+                                (crontab -l 2>/dev/null | grep -v "--check-tagihan"; \
+                                echo "$menit $jam * * * $(pwd)/$0 --check-tagihan") | crontab -
+                                ;;
+```
+
+Opsi 3 : Hapus Cron Job Pengingat <br>
+Berfungsi untuk menghapus jadwal cron job. Setelah sistem disaring seperti pada opsi 2, hasilnya kemudian langsung disimpan kembali ke dalam crontab menggunakan crontab -, sehingga cron job pengingat tagihan yang sebelumnya terdaftar akan dihapus sepenuhnya.
+
+```
+                        3)
+                                crontab -l 2>/dev/null | grep -v "--check-tagihan" | crontab -
+                                echo "[!] Cron job pengingat tagihan berhasil dihapus."
+                                echo " "
+                                read -p "Tekan [ENTER] untuk kembali ke menu..."
+                                ;;
+```
+
+Opsi terakhir : Exit 
+
+```
+                        4)
+                                break
+                                ;;
+
+                        *)
+                                echo "Pilihan tidak valid!"
+                                read
+                                ;;
+                        esac
+                done
+        ;;
+
+        7)
+                break
+                ;;
+
+        *)
+                echo "Pilihan tidak valid!"
+                read
+                ;;
+        esac
+done
+```
+Full code untuk Menu Kelola Cron :
+
+```
 
 
 
