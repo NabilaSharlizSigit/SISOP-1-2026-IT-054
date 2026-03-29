@@ -378,7 +378,7 @@ Berfungsi untuk menghapus jadwal cron job. Setelah sistem disaring seperti pada 
                                 ;;
 ```
 
-Opsi terakhir : Exit 
+Opsi terakhir : Exit (pada menu kelola dan menu utama)
 
 ```
                         4)
@@ -407,6 +407,57 @@ done
 Full code untuk Menu Kelola Cron :
 
 ```
+	6)
+		while true
+		do
+			clear
+			echo "========== MENU KELOLA CRON =========="
+			echo " "
+			echo "1. Lihat Cron Job Aktif"
+			echo "2. Daftarkan Cron Job Pengingat"
+			echo "3. Hapus Cron Job Pengingat"
+			echo "4. Kembali"
+			echo " "
+			echo "======================================"
+			read -p "Pilih [1-4]: " choice
+
+			case $choice in
+
+			1)
+				echo "--- Daftar Cron Job Pengingat Tagihan ---"
+				crontab -l 2>/dev/null | grep "--check-tagihan" || echo "Tidak ada jadwal."
+				echo " "
+				read -p "Tekan [ENTER] untuk kembali ke menu..."
+				;;
+
+			2)
+				read -p "Masukkan Jam (0-23): " jam
+				read -p "Masukkan Menit (0-59): " menit
+
+				(crontab -l 2>/dev/null | grep -v "--check-tagihan"; \
+				echo "$menit $jam * * * $(pwd)/$0 --check-tagihan") | crontab - 
+				;;
+
+			3)
+				crontab -l 2>/dev/null | grep -v "--check-tagihan" | crontab -
+				echo "[!] Cron job pengingat tagihan berhasil dihapus."
+				echo " "
+				read -p "Tekan [ENTER] untuk kembali ke menu..."
+				;;
+
+			4)
+				break
+				;;
+
+			*)
+				echo "Pilihan tidak valid!"
+				read
+				;;
+			esac
+		done
+	;;
+```
+
 
 
 
