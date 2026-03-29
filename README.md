@@ -9,7 +9,7 @@ Berikut adalah Reporting dari Praktikum SISOP Modul 1 :
 Langkah pertama yaitu semua command dibuat pada satu file yaitu pada KANJ.sh.
 Pada Begin menggunakan ARGV[2] untuk pilihan karena pada terminal memanggil menggunakan "awk -f KANJ.sh passenger.csv (pilihan a/b/c/d/e)"
 
-```shell
+```bash
 BEGIN {
         FS=","
         pilihan=ARGV[2]
