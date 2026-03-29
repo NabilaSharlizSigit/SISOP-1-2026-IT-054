@@ -57,8 +57,11 @@ END {
 }
 ```
 Full code bisa dilihat di [KANJ.sh](./soal_1/KANJ.sh)<br>
-Data yang dipakai yaitu [Data Passenger](./soal_1/passenger.csv)<br>
-Berikut adalah outputnya: 
+Data yang dipakai yaitu [Data Passenger](./soal_1/passenger.csv)
+
+**Output:**
+<img width="657" height="314" alt="image" src="https://github.com/user-attachments/assets/e8cd3b1d-30b9-468d-8f3b-7c76c3675708" />
+
 
 ---
 ## **Soal 2**
