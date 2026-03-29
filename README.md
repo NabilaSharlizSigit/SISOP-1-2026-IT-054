@@ -125,7 +125,6 @@ Untuk menyimpannya ke posisipusaka.txt menggunakan command **./nemupusaka.sh > p
 **Output:**
 <br>
 1. parserkoordinat.sh
-<br>
 <img width="768" height="141" alt="image" src="https://github.com/user-attachments/assets/d83c58d5-c039-4743-9c3a-354b2bd5f852" />
 <br>
 3. titik-penting.txt <br>
